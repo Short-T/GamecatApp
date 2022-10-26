@@ -17,23 +17,21 @@ class DetailActivity : AppCompatActivity() {
         val title = intent.getStringExtra("title")
         val description = intent.getStringExtra("description")
 
-        val textView = findViewById<TextView>(R.id.description_textview)
+        //val textView = findViewById<TextView>(R.id.description_textview)
         // TODO 2
         //  Set the description TextView to be the course description
 
-        textView.text = description
+        //textView.text = description
 
         // TODO 3
         //  Make the TextView scrollable
         //  HINT: Look at the movementMethod attribute for descTextView
 
-        textView.movementMethod = ScrollingMovementMethod()
+        //textView.movementMethod = ScrollingMovementMethod()
 
         // TODO 4
         //  Set the title of the action bar to be the course title
         //  HINT:
         //   This might help you - http://developer.android.com/reference/android/support/v7/app/AppCompatActivity.html#getSupportActionBar%28%29
-
-        supportActionBar!!.title = title
     }
 }
