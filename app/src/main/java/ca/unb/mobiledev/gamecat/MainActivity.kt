@@ -20,16 +20,26 @@ import ca.unb.mobiledev.gamecat.model.Game
 import java.util.ArrayList
 class MainActivity : AppCompatActivity() {
     private var test: Button? = null
+    private var aTest: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         test = findViewById<View>(R.id.button) as Button
+        aTest = findViewById<View>(R.id.addButton) as Button
 
         test!!.setOnClickListener {
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
             try {
                 startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e("Main", "Unable to start the activity")
+            }
+        }
+        aTest!!.setOnClickListener {
+            val addIntent = Intent(this@MainActivity, AddActivity::class.java)
+            try {
+                startActivity(addIntent)
             } catch (ex: ActivityNotFoundException) {
                 Log.e("Main", "Unable to start the activity")
             }
