@@ -3,101 +3,152 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputRating"
-            android:layout_width="190dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="31dp"
-            android:hint="Mint Condition"
-            app:layout_constraintStart_toEndOf="@+id/addImage"
-            app:layout_constraintTop_toTopOf="@+id/addRating" />
+    android:layout_height="match_parent"
+    tools:context="ca.unb.mobiledev.gamecat.AddActivity">
 
         <Button
             android:id="@+id/addButton"
             android:layout_width="207dp"
             android:layout_height="88dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
             android:text="Add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputDesc" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputNotes"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
-            android:id="@+id/addImage"
-            android:layout_width="152dp"
-            android:layout_height="369dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginEnd="38dp"
-            android:layout_marginBottom="85dp"
-            app:layout_constraintBottom_toTopOf="@+id/inputDesc"
-            app:layout_constraintEnd_toStartOf="@+id/inputTitle"
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="146dp"
+            android:layout_height="215dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@android:drawable/ic_menu_camera" />
+
+        <EditText
+            android:id="@+id/textInputName"
+            android:layout_width="208dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
 
         <TextView
-            android:id="@+id/addTitle"
+            android:id="@+id/nameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="36dp"
-            android:text="Title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/addImage"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="32dp"
+            android:text="Name"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout2"
-            android:layout_width="209dp"
+        <TextView
+            android:id="@+id/releaseLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="1dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="16dp"
+            android:text="Release Date"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/textInputName" />
+
+        <EditText
+            android:id="@+id/textInputRelease"
+            android:layout_width="204dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Year"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputTitle">
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/releaseLabel" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/ratingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="16dp"
+            android:text="Rating"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/textInputRelease" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputTitle"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="37dp"
-            android:layout_marginEnd="19dp"
-            android:hint="Game title 5"
+        <EditText
+            android:id="@+id/textInputRating"
+            android:layout_width="207dp"
+            android:layout_height="63dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Rating"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/addImage"
-            app:layout_constraintTop_toTopOf="@+id/addTitle" />
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/ratingLabel" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputDesc"
-            android:layout_width="360dp"
-            android:layout_height="164dp"
-            android:layout_marginBottom="31dp"
-            android:hint="Comes with manual and case"
-            app:layout_constraintBottom_toTopOf="@+id/addButton"
+        <TextView
+            android:id="@+id/conditionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="16dp"
+            android:text="Condition"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/textInputRating" />
+
+        <EditText
+            android:id="@+id/textInputCond"
+            android:layout_width="204dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Condition"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/conditionLabel" />
+
+        <TextView
+            android:id="@+id/notesLabel"
+            android:layout_width="32dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="16dp"
+            android:text="Notes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addImage" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputCond" />
 
-        <TextView
-            android:id="@+id/addDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="19dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/inputDesc"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/addRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="TextView"
+        <EditText
+            android:id="@+id/textInputNotes"
+            android:layout_width="335dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/addImage"
-            app:layout_constraintTop_toTopOf="@+id/textInputLayout2" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notesLabel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

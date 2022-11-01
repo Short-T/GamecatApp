@@ -10,23 +10,20 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toolbar
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.gamecat.model.Game
 import java.util.ArrayList
 class MainActivity : AppCompatActivity() {
     private var test: Button? = null
-    private var aTest: Button? = null
+    private var aTest: ImageButton? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         test = findViewById<View>(R.id.button) as Button
-        aTest = findViewById<View>(R.id.addbutton) as Button
+        aTest = findViewById<View>(R.id.addButton) as ImageButton
 
         test!!.setOnClickListener {
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
