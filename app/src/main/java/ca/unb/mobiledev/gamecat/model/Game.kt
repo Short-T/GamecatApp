@@ -1,5 +1,8 @@
 package ca.unb.mobiledev.gamecat.model
 
+import androidx.room.Entity
+
+@Entity(tableName = "game_table")
 class Game private constructor(
     private val id: String?,
     private val name: String?,
