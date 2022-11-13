@@ -1,15 +1,17 @@
 package ca.unb.mobiledev.gamecat.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "game_table")
-class Game private constructor(
-    private val id: String?,
-    private val name: String?,
-    val description: String?,
-    val src: String?,
-    val cond: String?
-) {
+class Game{
+    @PrimaryKey(autoGenerate = true)
+    var id = 0
+    var name: String? = null
+    var description: String? = null
+    var src: String? = null
+    var cond: String? = null
+
     // Only need to include getters
     val title: String
         get() = "$name"
@@ -17,7 +19,7 @@ class Game private constructor(
     val condition: String
         get() = "Condition: $cond"
 
-    data class Builder(
+    /**data class Builder(
         var id: String? = null,
         var name: String? = null,
         var description: String? = null,
@@ -30,6 +32,6 @@ class Game private constructor(
         fun description(description: String) = apply { this.description = description }
         fun src(src: String) = apply { this.src = src}
         fun cond(cond: String) = apply { this.cond = cond}
-        fun build() = Game(id, name, description, src, cond)
-    }
+        fun build() = Game(name, description, src, cond)
+    }*/
 }
