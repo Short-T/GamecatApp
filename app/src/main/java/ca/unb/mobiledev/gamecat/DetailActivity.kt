@@ -12,7 +12,7 @@ class DetailActivity : AppCompatActivity() {
 
         // TODO 1
         //  Get the intent that started this activity, and get the extras from it
-        //  corresponding to the title and description of the course
+        //  description + rating + condition + release etc
 
         val title = intent.getStringExtra("title")
         val description = intent.getStringExtra("description")

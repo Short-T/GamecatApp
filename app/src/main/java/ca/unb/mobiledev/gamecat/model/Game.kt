@@ -9,6 +9,7 @@ class Game{
     var id = 0
     var name: String? = null
     var description: String? = null
+    var year: String? = null
     var src: String? = null
     var cond: String? = null
 
@@ -18,6 +19,9 @@ class Game{
 
     val condition: String
         get() = "Condition: $cond"
+
+    val release: String
+        get() = "Release: $year"
 
     /**data class Builder(
         var id: String? = null,

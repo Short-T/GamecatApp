@@ -1,4 +1,4 @@
-package mobiledev.unb.ca.roompersistencelab.db
+package ca.unb.mobiledev.gamecat.db
 
 import android.content.Context
 import androidx.room.Database
