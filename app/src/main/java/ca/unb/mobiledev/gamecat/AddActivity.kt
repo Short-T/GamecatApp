@@ -32,6 +32,10 @@ class AddActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Can't create a game without a title", Toast.LENGTH_SHORT).show();
             } else {
                 // TODO What it does to add a game
+                // It should add the game to the database
+
+                //finish() should terminate the activity
+                finish()
             }
         }
     }

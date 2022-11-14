@@ -23,6 +23,12 @@ class Game{
     val release: String
         get() = "Release: $year"
 
+    val img: String
+        get() = "$src"
+
+    val desc: String
+        get() = "$desc"
+
     /**data class Builder(
         var id: String? = null,
         var name: String? = null,
