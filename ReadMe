@@ -1,0 +1,14 @@
+To Do:
+
+1. Implement RecyclerView
+  i. recylcerview layout
+  ii. grab existing game list
+  
+2. Implement adding game function calls
+
+3. Implement searching 
+    i. Search first by title
+    ii. If result list = 0, search by notes or description, or year
+    iii. Search by console?
+    
+4. Implement removegame
