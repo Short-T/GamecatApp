@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 /**
- * Database layer in top of the SQLite database
+ * Database layer on top of the SQLite database
  */
 @Database(entities = [Game::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
