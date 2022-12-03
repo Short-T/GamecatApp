@@ -17,7 +17,8 @@ interface GameDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(game: Game)
-    // TODO
+
+// TODO
     //  Add app specific queries in here
     //  Additional details can be found at https://developer.android.com/reference/android/arch/persistence/room/Dao
 }
