@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import ca.unb.mobiledev.gamecat.dao.GameDao
 import ca.unb.mobiledev.gamecat.db.AppDatabase.Companion.getDatabase
 import ca.unb.mobiledev.gamecat.db.AppDatabase
-import ca.unb.mobiledev.gamecat.model.Game
+import ca.unb.mobiledev.gamecat.repository.model.Game
 import java.util.concurrent.Callable
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.Future

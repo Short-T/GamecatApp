@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 import ca.unb.mobiledev.gamecat.dao.GameDao
 import kotlin.jvm.Volatile
 import androidx.room.Room
-import ca.unb.mobiledev.gamecat.model.Game
+import ca.unb.mobiledev.gamecat.repository.model.Game
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

@@ -1,4 +1,4 @@
-package ca.unb.mobiledev.gamecat.model
+package ca.unb.mobiledev.gamecat.repository.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

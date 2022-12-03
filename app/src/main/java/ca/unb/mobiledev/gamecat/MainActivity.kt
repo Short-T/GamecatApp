@@ -13,7 +13,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import ca.unb.mobiledev.gamecat.model.Game
+import ca.unb.mobiledev.gamecat.repository.model.Game
 import java.util.ArrayList
 class MainActivity : AppCompatActivity() {
     private var test: Button? = null
@@ -52,6 +52,8 @@ class MainActivity : AppCompatActivity() {
         class ViewHolder(var mTextView: TextView) : RecyclerView.ViewHolder(
             mTextView
             // TODO add more objects
+            //Eg photo, title, platform, year
+
         )
 
         // The inflate method of the LayoutInflater class can be used to obtain the
@@ -72,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val game = mDataset[position]
             holder.mTextView.text = game.title
-
+            holder
             // TODO
             // Add other views in viewholder to accompany title
             //
