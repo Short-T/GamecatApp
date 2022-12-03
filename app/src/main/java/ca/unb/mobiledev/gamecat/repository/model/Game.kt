@@ -10,6 +10,7 @@ class Game{
     var name: String? = null
     var description: String? = null
     var year: String? = null
+    //might not be string for img
     var src: String? = null
     var cond: String? = null
 
