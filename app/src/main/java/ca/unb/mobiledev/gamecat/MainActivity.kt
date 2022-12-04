@@ -14,6 +14,8 @@ import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.gamecat.repository.model.Game
+import org.w3c.dom.Text
+import java.time.Year
 import java.util.ArrayList
 class MainActivity : AppCompatActivity() {
     private var test: Button? = null
@@ -22,17 +24,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        test = findViewById<View>(R.id.button) as Button
+        //test = findViewById<View>(R.id.button) as Button
         aTest = findViewById<View>(R.id.addButton) as ImageButton
-
-        test!!.setOnClickListener {
+        //Sample code for button, will delete later
+        /*test!!.setOnClickListener {
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
             try {
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
                 Log.e("Main", "Unable to start the activity")
             }
-        }
+        }*/
         aTest!!.setOnClickListener {
             val addIntent = Intent(this@MainActivity, AddActivity::class.java)
             try {
@@ -50,11 +52,10 @@ class MainActivity : AppCompatActivity() {
         // but RecyclerView gives us the flexibility to do more complex things
         // (e.g., display an image and some text).
         class ViewHolder(var mTextView: TextView) : RecyclerView.ViewHolder(
-            mTextView
-            // TODO add more objects
-            //Eg photo, title, platform, year
-
+            mTextView// TODO add more objects//Eg photo, title, platform, year
         )
+
+
 
         // The inflate method of the LayoutInflater class can be used to obtain the
         // View object corresponding to an XML layout resource file. Here
