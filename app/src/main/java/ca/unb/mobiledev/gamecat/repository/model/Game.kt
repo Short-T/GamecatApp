@@ -1,4 +1,4 @@
-package ca.unb.mobiledev.gamecat.model
+package ca.unb.mobiledev.gamecat.repository.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,6 +8,7 @@ class Game{
     @PrimaryKey(autoGenerate = true)
     var id = 0
     var name: String? = null
+    var plat: String? = null
     var description: String? = null
     var year: String? = null
     //might not be string for img
@@ -17,6 +18,9 @@ class Game{
     // Only need to include getters
     val title: String
         get() = "$name"
+
+    val platform: String
+        get() = "$plat"
 
     val condition: String
         get() = "Condition: $cond"

@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import ca.unb.mobiledev.gamecat.model.Game
+import ca.unb.mobiledev.gamecat.repository.model.Game
 
 /**
  * This DAO object validates the SQL at compile-time and associates it with a method

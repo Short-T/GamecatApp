@@ -13,11 +13,14 @@ import android.provider.MediaStore
 import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import ca.unb.mobiledev.gamecat.repository.GameRepository
+import ca.unb.mobiledev.gamecat.repository.model.Game
 import java.util.*
 
 
 class AddActivity : AppCompatActivity() {
     private var editTextTitle: EditText? = null
+    private var editPlatform: EditText? = null
     private var editTextRelease: EditText? = null
     private var editTextCond: EditText? = null
     private var editTextNotes: EditText? = null
@@ -31,6 +34,7 @@ class AddActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add)
 
         editTextTitle = findViewById(R.id.textInputName)
+        editPlatform = findViewById(R.id.textInputPlatform)//adding to xml rn
         editTextRelease = findViewById(R.id.textInputRelease)
         editTextCond = findViewById(R.id.textInputCond)
         editTextNotes = findViewById(R.id.textInputNotes)
@@ -49,6 +53,7 @@ class AddActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Can't create a game without a title", Toast.LENGTH_SHORT).show();
             } else {
                 // TODO What it does to add a game
+
                 // It should add the game to the database
 
                 //finish() should terminate the activity

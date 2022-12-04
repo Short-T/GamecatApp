@@ -15,6 +15,8 @@ class DetailActivity : AppCompatActivity() {
         //  description + rating + condition + release etc
 
         val title = intent.getStringExtra("title")
+        val plat = intent.getStringExtra("platform")
+        val year = intent.getStringExtra("year")
         val description = intent.getStringExtra("description")
 
         //val textView = findViewById<TextView>(R.id.description_textview)
