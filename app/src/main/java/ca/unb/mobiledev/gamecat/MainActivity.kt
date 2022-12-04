@@ -11,17 +11,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.gamecat.repository.model.Game
-import java.util.ArrayList
+import ca.unb.mobiledev.gamecat.utils.GameViewModel
+
+
 class MainActivity : AppCompatActivity() {
     //private var test: Button? = null
     private var aTest: ImageButton? = null
+    private lateinit var mDataSet: List<Game>
+    lateinit var viewModel: GameViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView3)
+        viewModel = ViewModelProvider(this)[GameViewModel::class.java]
+        //viewModel = ViewModelProvider(this)[GameViewModel::class.java]
+        mDataSet = viewModel.allGames
+
+
+        //recyclerView.adapter = MyAdapter(mDataSet, this)
 
         //test = findViewById<View>(R.id.button) as Button
         aTest = findViewById<View>(R.id.addButton) as ImageButton
@@ -44,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    class MyAdapter(private val mDataset: ArrayList<Game>, private val parentActivity: Activity) :
+    class MyAdapter(private val mDataset: List<Game>, private val parentActivity: Activity) :
         RecyclerView.Adapter<MyAdapter.ViewHolder>() {
         // ViewHolder represents an individual item to display. In this case
         // it will just be a single TextView (displaying the title of a course)
@@ -80,6 +93,7 @@ class MainActivity : AppCompatActivity() {
             holder.mPlatformTextView.text = game.platform
             holder.mYearTextView.text = game.year
             holder.mGamePhoto//need to figure out the game
+
             // TODO
             // Add other views in viewholder to accompany title
             //
@@ -96,8 +110,8 @@ class MainActivity : AppCompatActivity() {
                 } catch (e: ActivityNotFoundException) {
                     e.printStackTrace()
                 }
-
             }
+
         }
         override fun getItemCount(): Int {
             return mDataset.size

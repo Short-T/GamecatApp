@@ -2,7 +2,6 @@ package ca.unb.mobiledev.gamecat.repository
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
 import ca.unb.mobiledev.gamecat.dao.GameDao
 import ca.unb.mobiledev.gamecat.db.AppDatabase.Companion.getDatabase
 import ca.unb.mobiledev.gamecat.db.AppDatabase
@@ -40,6 +39,9 @@ class GameRepository(application: Application) {
         AppDatabase.databaseWriterExecutor.execute { itemDao!!.insert(game) }
         Log.i("Repository", "Game added to database")
     }
+
+    val allGames: List<Game> = itemDao!!.getAllGames()
+    val size: Int = itemDao!!.getSize()
 
     /*fun searchRecord(name: String): List<Item>{
         val dataReadFuture: Future<List<Item>>? = AppDatabase.databaseWriterExecutor.submit(

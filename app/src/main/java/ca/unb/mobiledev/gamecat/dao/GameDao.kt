@@ -18,6 +18,12 @@ interface GameDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(game: Game)
 
+    @Query("SELECT * from game_table order by name ASC")
+    fun getAllGames() : List<Game>
+
+    @Query("SELECT COUNT(name) from game_table")
+    fun getSize() : Int
+
 // TODO
     //  Add app specific queries in here
     //  Additional details can be found at https://developer.android.com/reference/android/arch/persistence/room/Dao
