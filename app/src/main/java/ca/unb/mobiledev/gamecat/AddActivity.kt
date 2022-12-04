@@ -13,6 +13,8 @@ import android.provider.MediaStore
 import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import ca.unb.mobiledev.gamecat.repository.GameRepository
+import ca.unb.mobiledev.gamecat.repository.model.Game
 import java.util.*
 
 
@@ -51,6 +53,7 @@ class AddActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Can't create a game without a title", Toast.LENGTH_SHORT).show();
             } else {
                 // TODO What it does to add a game
+
                 // It should add the game to the database
 
                 //finish() should terminate the activity

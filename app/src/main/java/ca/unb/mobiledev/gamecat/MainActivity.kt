@@ -87,6 +87,7 @@ class MainActivity : AppCompatActivity() {
             holder.mTitleTextView.setOnClickListener {
                 val intent = Intent(parentActivity, DetailActivity::class.java)
                 intent.putExtra("title", game.title)
+                intent.putExtra("platform", game.plat)
                 intent.putExtra("description", game.description)
                 intent.putExtra("image", game.src)
 
