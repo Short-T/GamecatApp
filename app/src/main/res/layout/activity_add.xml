@@ -7,6 +7,20 @@
     android:background="@color/material_dynamic_neutral_variant30"
     tools:context="ca.unb.mobiledev.gamecat.AddActivity">
 
+        <EditText
+            android:id="@+id/textInputPlatform"
+            android:layout_width="204dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/conditionLabel" />
+
         <Button
             android:id="@+id/addButton"
             android:layout_width="207dp"
@@ -35,13 +49,14 @@
         <EditText
             android:id="@+id/textInputName"
             android:layout_width="208dp"
-            android:layout_height="61dp"
+            android:layout_height="25dp"
             android:layout_marginStart="38dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="18dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.419"
             app:layout_constraintStart_toEndOf="@+id/imageButton"
             app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
 
@@ -49,9 +64,9 @@
             android:id="@+id/nameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="38dp"
-            android:layout_marginTop="32dp"
-            android:text = "Name"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="44dp"
+            android:text="Name"
             app:layout_constraintStart_toEndOf="@+id/imageButton"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,7 +74,7 @@
             android:id="@+id/releaseLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="38dp"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
             android:text="Release Date"
             app:layout_constraintStart_toEndOf="@+id/imageButton"
@@ -68,7 +83,7 @@
         <EditText
             android:id="@+id/textInputRelease"
             android:layout_width="204dp"
-            android:layout_height="65dp"
+            android:layout_height="25dp"
             android:layout_marginStart="38dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="18dp"
@@ -82,7 +97,7 @@
             android:id="@+id/ratingLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="38dp"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
             android:text="Rating"
             app:layout_constraintStart_toEndOf="@+id/imageButton"
@@ -91,7 +106,7 @@
         <EditText
             android:id="@+id/textInputRating"
             android:layout_width="207dp"
-            android:layout_height="63dp"
+            android:layout_height="25dp"
             android:layout_marginStart="38dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="18dp"
@@ -105,16 +120,26 @@
             android:id="@+id/conditionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="38dp"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
             android:text="Condition"
             app:layout_constraintStart_toEndOf="@+id/imageButton"
             app:layout_constraintTop_toBottomOf="@+id/textInputRating" />
 
+        <TextView
+            android:id="@+id/platformLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="16dp"
+            android:text="Platform"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/textInputCond" />
+
         <EditText
             android:id="@+id/textInputCond"
             android:layout_width="204dp"
-            android:layout_height="67dp"
+            android:layout_height="25dp"
             android:layout_marginStart="38dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="18dp"
@@ -131,8 +156,9 @@
             android:layout_marginTop="16dp"
             android:text="Notes"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputCond" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputPlatform" />
 
         <EditText
             android:id="@+id/textInputNotes"

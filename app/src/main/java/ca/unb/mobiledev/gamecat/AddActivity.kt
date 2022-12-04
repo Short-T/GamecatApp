@@ -18,6 +18,7 @@ import java.util.*
 
 class AddActivity : AppCompatActivity() {
     private var editTextTitle: EditText? = null
+    private var editPlatform: EditText? = null
     private var editTextRelease: EditText? = null
     private var editTextCond: EditText? = null
     private var editTextNotes: EditText? = null
@@ -31,6 +32,7 @@ class AddActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add)
 
         editTextTitle = findViewById(R.id.textInputName)
+        editPlatform = findViewById(R.id.textInputPlatform)//adding to xml rn
         editTextRelease = findViewById(R.id.textInputRelease)
         editTextCond = findViewById(R.id.textInputCond)
         editTextNotes = findViewById(R.id.textInputNotes)

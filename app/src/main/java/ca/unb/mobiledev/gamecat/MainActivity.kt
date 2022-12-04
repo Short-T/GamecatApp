@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.gamecat.repository.model.Game
 import java.util.ArrayList
 class MainActivity : AppCompatActivity() {
-    private var test: Button? = null
+    //private var test: Button? = null
     private var aTest: ImageButton? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
