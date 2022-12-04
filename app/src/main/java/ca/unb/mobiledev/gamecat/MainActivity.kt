@@ -7,15 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.gamecat.repository.model.Game
-import org.w3c.dom.Text
-import java.time.Year
 import java.util.ArrayList
 class MainActivity : AppCompatActivity() {
     private var test: Button? = null
@@ -23,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView3)
 
         //test = findViewById<View>(R.id.button) as Button
         aTest = findViewById<View>(R.id.addButton) as ImageButton
@@ -51,9 +50,11 @@ class MainActivity : AppCompatActivity() {
         // it will just be a single TextView (displaying the title of a course)
         // but RecyclerView gives us the flexibility to do more complex things
         // (e.g., display an image and some text).
-        class ViewHolder(var mTextView: TextView) : RecyclerView.ViewHolder(
-            mTextView// TODO add more objects//Eg photo, title, platform, year
-        )
+        class ViewHolder(v: TextView) : RecyclerView.ViewHolder(v){
+            var mTitleTextView: TextView = v.findViewById(R.id.title)
+            var mPlatformTextView: TextView = v.findViewById(R.id.platform)
+            var mYearTextView: TextView = v.findViewById(R.id.releaseYear)
+        }
 
 
 
@@ -74,13 +75,13 @@ class MainActivity : AppCompatActivity() {
         // position in mDataset
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val game = mDataset[position]
-            holder.mTextView.text = game.title
-            holder
+            holder.mTitleTextView.text = game.title
+
             // TODO
             // Add other views in viewholder to accompany title
             //
 
-            holder.mTextView.setOnClickListener {
+            holder.mTitleTextView.setOnClickListener {
                 val intent = Intent(parentActivity, DetailActivity::class.java)
                 intent.putExtra("title", game.title)
                 intent.putExtra("description", game.description)
