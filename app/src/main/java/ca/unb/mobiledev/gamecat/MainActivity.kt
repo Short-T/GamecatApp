@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         // but RecyclerView gives us the flexibility to do more complex things
         // (e.g., display an image and some text).
         class ViewHolder(v: TextView) : RecyclerView.ViewHolder(v){
+            var mGamePhoto: ImageView = v.findViewById(R.id.image)//Check if image is the right ID later
             var mTitleTextView: TextView = v.findViewById(R.id.title)
             var mPlatformTextView: TextView = v.findViewById(R.id.platform)
             var mYearTextView: TextView = v.findViewById(R.id.releaseYear)
@@ -76,7 +77,9 @@ class MainActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val game = mDataset[position]
             holder.mTitleTextView.text = game.title
-
+            holder.mPlatformTextView.text = game.platform
+            holder.mYearTextView.text = game.year
+            holder.mGamePhoto//need to figure out the game
             // TODO
             // Add other views in viewholder to accompany title
             //
