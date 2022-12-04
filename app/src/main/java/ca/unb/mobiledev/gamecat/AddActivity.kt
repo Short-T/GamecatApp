@@ -13,8 +13,10 @@ import android.provider.MediaStore
 import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import ca.unb.mobiledev.gamecat.repository.GameRepository
 import ca.unb.mobiledev.gamecat.repository.model.Game
+import ca.unb.mobiledev.gamecat.utils.GameViewModel
 import java.util.*
 
 
@@ -27,11 +29,15 @@ class AddActivity : AppCompatActivity() {
     private var editTextRating: EditText? = null
     private var gameButton: ImageButton? = null
 
+    private lateinit var viewModel: GameViewModel
 
     @SuppressLint("IntentReset")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
+
+        //example in RoomPersistenceLab MainActivity
+        viewModel = ViewModelProvider(this)[GameViewModel::class.java]
 
         editTextTitle = findViewById(R.id.textInputName)
         editPlatform = findViewById(R.id.textInputPlatform)//adding to xml rn
@@ -52,7 +58,12 @@ class AddActivity : AppCompatActivity() {
             if(TextUtils.isEmpty(editTextTitle!!.text.toString())) {
                 Toast.makeText(applicationContext, "Can't create a game without a title", Toast.LENGTH_SHORT).show();
             } else {
-                // TODO What it does to add a game
+                //insert name, release, plat, cond, desc
+                viewModel.insert(editTextTitle!!.text.toString(),
+                                editTextRelease!!.text.toString(),
+                                editPlatform!!.text.toString(),
+                                editTextCond!!.text.toString(),
+                                editTextNotes!!.text.toString())
 
                 // It should add the game to the database
 

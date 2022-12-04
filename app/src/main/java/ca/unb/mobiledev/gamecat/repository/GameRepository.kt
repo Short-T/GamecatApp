@@ -1,6 +1,7 @@
 package ca.unb.mobiledev.gamecat.repository
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import ca.unb.mobiledev.gamecat.dao.GameDao
 import ca.unb.mobiledev.gamecat.db.AppDatabase.Companion.getDatabase
@@ -37,7 +38,7 @@ class GameRepository(application: Application) {
 
     private fun insert(game: Game) {
         AppDatabase.databaseWriterExecutor.execute { itemDao!!.insert(game) }
-
+        Log.i("Repository", "Game added to database")
     }
 
     /*fun searchRecord(name: String): List<Item>{
