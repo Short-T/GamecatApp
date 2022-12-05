@@ -13,6 +13,7 @@ class GameRepository(private val gameDao: GameDao) {
         gameList - gets all games
         insertGame - inserts one game
         deleteGame - deletes one game
+    */
 
     fun insertGame(name: String?, release: String?, rating: String?,  plat: String?, condition: String?, desc: String?) {
         val newGame = Game()
