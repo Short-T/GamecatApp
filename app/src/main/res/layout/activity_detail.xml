@@ -8,7 +8,7 @@
     tools:context="ca.unb.mobiledev.gamecat.AddActivity">
 
     <TextView
-        android:id="@+id/ratingBox3"
+        android:id="@+id/platformBox"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toBottomOf="@+id/platformLabel" />
 
     <TextView
-        android:id="@+id/ratingBox2"
+        android:id="@+id/conditionBox"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
@@ -113,7 +113,7 @@
         android:layout_marginTop="8dp"
         android:text="Platform"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBox2" />
+        app:layout_constraintTop_toBottomOf="@+id/conditionBox" />
 
     <TextView
         android:id="@+id/notesLabel"
@@ -124,7 +124,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBox3" />
+        app:layout_constraintTop_toBottomOf="@+id/platformBox" />
 
     <TextView
         android:id="@+id/notesBox"
