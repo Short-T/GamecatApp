@@ -27,7 +27,10 @@ class AddActivity : AppCompatActivity() {
     private var editTextNotes: EditText? = null
     private var editTextRating: EditText? = null
     private var gameButton: ImageButton? = null
+
+    private var testImage: Bitmap? = null
     private var image: ByteArray? = null
+
     private lateinit var viewModel: GameViewModel
 
     @SuppressLint("IntentReset")
@@ -57,13 +60,21 @@ class AddActivity : AppCompatActivity() {
             if(TextUtils.isEmpty(editTextTitle!!.text.toString())) {
                 Toast.makeText(applicationContext, "Can't create a game without a title", Toast.LENGTH_SHORT).show();
             } else {
+
+                //Converts Bitmap to Bytearray for insert
+                val bitmap: Bitmap? = testImage
+                val byteArrayOutputStream = ByteArrayOutputStream()
+                bitmap!!.compress(Bitmap.CompressFormat.PNG, 0, byteArrayOutputStream)
+                val bytesImage = byteArrayOutputStream.toByteArray()
+
+
                 //insert name, release, plat, cond, desc
                 viewModel.insert(editTextTitle!!.text.toString(),
                                 editTextRelease!!.text.toString(),
                         editTextRating!!.text.toString(),
                                 editPlatform!!.text.toString(),
                                 editTextCond!!.text.toString(),
-                                editTextNotes!!.text.toString())
+                                editTextNotes!!.text.toString(), bytesImage)
 
 
                 // VALUES NOT BEING PROPERLY ADDED PLEASE FIX
@@ -87,11 +98,13 @@ class AddActivity : AppCompatActivity() {
                 // gameButton?.setImageURI(selectedImage)
 
                 val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, selectedImage)
+                testImage = bitmap
                 gameButton?.setImageBitmap(bitmap)
                 image = fromBitmap(bitmap)
             }
             500 -> if (resultCode === RESULT_OK) {
                 val bitmap: Bitmap = data?.extras?.get("data") as Bitmap
+                testImage = bitmap
                 gameButton?.setImageBitmap(bitmap)
                 image = fromBitmap(bitmap)
             }

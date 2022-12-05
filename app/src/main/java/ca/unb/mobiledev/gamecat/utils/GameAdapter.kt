@@ -9,6 +9,10 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import ca.unb.mobiledev.gamecat.R
 import ca.unb.mobiledev.gamecat.model.Game
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.widget.ImageView
+import androidx.room.TypeConverter
 
 class GameAdapter(context: Context, games: List<Game>) : ArrayAdapter<Game>(
     context, 0, games) {
@@ -22,6 +26,7 @@ class GameAdapter(context: Context, games: List<Game>) : ArrayAdapter<Game>(
 
         // TODO
         // Add images
+        val image = view!!.findViewById<ImageView>(R.id.GameIconImage)
 
         val title = view!!.findViewById<TextView>(R.id.title)
         val desc = view.findViewById<TextView>(R.id.platform)
@@ -31,6 +36,17 @@ class GameAdapter(context: Context, games: List<Game>) : ArrayAdapter<Game>(
         desc.text = game.plat
         rel.text = game.year
 
+        val imageSrc: ByteArray? = game.src
+        val imageBit: Bitmap? = imageSrc?.let { toBitmap(it) }
+        image.setImageBitmap(imageBit)
+
         return view
     }
+
+    //Taken from here https://github.com/prasadankitt/ImageApp/blob/main/app/src/main/java/com/example/cameragallery/Converter.kt
+    @TypeConverter
+    fun toBitmap(byteArray: ByteArray) : Bitmap {
+        return BitmapFactory.decodeByteArray(byteArray,0,byteArray.size)
+    }
+
 }

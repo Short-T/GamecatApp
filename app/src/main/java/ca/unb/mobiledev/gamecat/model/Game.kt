@@ -14,7 +14,7 @@ class Game{
     var rat: String? = null
     // TODO add rating
     //might not be string for img
-    var src: String? = null
+    var src: ByteArray? = null
     var cond: String? = null
 
     /**data class Builder(

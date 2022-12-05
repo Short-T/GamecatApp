@@ -1,10 +1,15 @@
 package ca.unb.mobiledev.gamecat
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.room.TypeConverter
 
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +23,8 @@ class DetailActivity : AppCompatActivity() {
         val year = intent.getStringExtra("year")
         val cond = intent.getStringExtra("condition")
         val description = intent.getStringExtra("description")
+        val src = intent.getByteArrayExtra("image")
+
 
         // Get textviews
         val tText = findViewById<TextView>(R.id.gameNameBox)
@@ -26,6 +33,9 @@ class DetailActivity : AppCompatActivity() {
         val cText = findViewById<TextView>(R.id.conditionBox)
         val rText = findViewById<TextView>(R.id.ratingBox)
         val dText = findViewById<TextView>(R.id.notesBox)
+
+        val iImageView = findViewById<ImageView>(R.id.imageView)
+
         Log.i("Detail", "$title $plat $rat $year $cond $description")
         // Set textviews
         tText.text = title
@@ -35,6 +45,9 @@ class DetailActivity : AppCompatActivity() {
         rText.text = rat
         dText.text = description
 
+        val imageSrc: ByteArray? = src
+        val imageBit: Bitmap? = imageSrc?.let { toBitmap(it) }
+        iImageView.setImageBitmap(imageBit)
 
         // TODO 3
         //  Make the TextView scrollable
@@ -47,4 +60,11 @@ class DetailActivity : AppCompatActivity() {
         //  HINT:
         //   This might help you - http://developer.android.com/reference/android/support/v7/app/AppCompatActivity.html#getSupportActionBar%28%29
     }
+
+    //Taken from here https://github.com/prasadankitt/ImageApp/blob/main/app/src/main/java/com/example/cameragallery/Converter.kt
+    @TypeConverter
+    fun toBitmap(byteArray: ByteArray) : Bitmap {
+        return BitmapFactory.decodeByteArray(byteArray,0,byteArray.size)
+    }
+
 }

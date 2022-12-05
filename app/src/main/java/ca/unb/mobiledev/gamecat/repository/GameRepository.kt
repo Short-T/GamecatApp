@@ -15,7 +15,7 @@ class GameRepository(private val gameDao: GameDao) {
         deleteGame - deletes one game
     */
 
-    fun insertGame(name: String?, release: String?, rating: String?,  plat: String?, condition: String?, desc: String?) {
+    fun insertGame(name: String?, release: String?, rating: String?,  plat: String?, condition: String?, desc: String?, img: ByteArray?) {
         val newGame = Game()
         newGame.name = name
         newGame.year = release
@@ -23,7 +23,7 @@ class GameRepository(private val gameDao: GameDao) {
         newGame.plat = plat
         newGame.cond = condition
         newGame.description = desc
-        //newGame.src = img
+        newGame.src = img
         insert(newGame)
     }
 

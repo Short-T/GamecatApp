@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     intent.putExtra("description", game.description)
                     intent.putExtra("year", game.year)
                     intent.putExtra("condition", game.cond)
-                    //intent.putExtra("image", game.src)
+                    intent.putExtra("image", game.src)
                     Log.i("Main", "")
                     try {
                         ContextCompat.startActivity(this@MainActivity, intent, null)

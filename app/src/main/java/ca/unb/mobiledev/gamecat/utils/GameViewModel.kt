@@ -21,8 +21,8 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         allGames = gameRepo.gameList
     }
 
-    fun insert(name: String?, release: String?, rating :String, plat: String, condition: String?, desc: String?) = viewModelScope.launch(Dispatchers.IO){
-        gameRepo.insertGame(name, release, rating, plat, condition, desc)
+    fun insert(name: String?, release: String?, rating :String, plat: String, condition: String?, desc: String?, img: ByteArray?) = viewModelScope.launch(Dispatchers.IO){
+        gameRepo.insertGame(name, release, rating, plat, condition, desc, img)
         Log.i("view", "Inserting $name, $release, $rating, $condition, $plat, $desc")
     }
 
