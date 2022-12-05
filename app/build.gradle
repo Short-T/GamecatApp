@@ -34,6 +34,8 @@ android {
 
 ext {
     roomVersion = '2.4.3'
+    archLifecycleExtensionsVersion = '2.2.0'
+    archLifecycleVersion = '2.3.0'
 }
 
 dependencies {
@@ -55,4 +57,13 @@ dependencies {
     implementation "androidx.room:room-runtime:$roomVersion"
     annotationProcessor "androidx.room:room-compiler:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleExtensionsVersion"
+    kapt "androidx.lifecycle:lifecycle-common-java8:$archLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+
+    // Kotlin coroutine dependencies
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 }

@@ -15,7 +15,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import ca.unb.mobiledev.gamecat.repository.GameRepository
-import ca.unb.mobiledev.gamecat.repository.model.Game
+import ca.unb.mobiledev.gamecat.model.Game
 import ca.unb.mobiledev.gamecat.utils.GameViewModel
 import java.util.*
 

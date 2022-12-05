@@ -11,17 +11,40 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ca.unb.mobiledev.gamecat.repository.model.Game
-import java.util.ArrayList
+import ca.unb.mobiledev.gamecat.model.Game
+import ca.unb.mobiledev.gamecat.utils.GameAdapter
+import ca.unb.mobiledev.gamecat.utils.GameViewModel
+
+
 class MainActivity : AppCompatActivity() {
     //private var test: Button? = null
-    private var aTest: ImageButton? = null
+    private lateinit var viewModel: GameViewModel
+    private lateinit var adapterG: GameAdapter
+    private lateinit var aTest: ImageButton
+    private lateinit var mListView: ListView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView3)
+        val viewModel = ViewModelProvider(this)[GameViewModel::class.java]
+        var mDataSet: LiveData<List<Game>> = viewModel.allGames
+
+        mListView = findViewById(R.id.listView)
+        this.viewModel = ViewModelProvider(this)[GameViewModel::class.java]
+        viewModel.allGames.observe(this) {
+            games ->
+            if(games != null) {
+                adapterG = GameAdapter(applicationContext, games)
+                mListView.adapter = adapterG
+            }
+            adapterG.notifyDataSetChanged()
+        }
 
         //test = findViewById<View>(R.id.button) as Button
         aTest = findViewById<View>(R.id.addButton) as ImageButton
@@ -44,17 +67,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    class MyAdapter(private val mDataset: ArrayList<Game>, private val parentActivity: Activity) :
+    class MyAdapter(private val gameList: List<Game>, private val parentActivity: Activity) :
         RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+
         // ViewHolder represents an individual item to display. In this case
         // it will just be a single TextView (displaying the title of a course)
         // but RecyclerView gives us the flexibility to do more complex things
         // (e.g., display an image and some text).
-        class ViewHolder(v: TextView) : RecyclerView.ViewHolder(v){
+        class ViewHolder(v: View) : RecyclerView.ViewHolder(v){
             var mGamePhoto: ImageView = v.findViewById(R.id.image)//Check if image is the right ID later
             var mTitleTextView: TextView = v.findViewById(R.id.title)
             var mPlatformTextView: TextView = v.findViewById(R.id.platform)
             var mYearTextView: TextView = v.findViewById(R.id.releaseYear)
+
         }
 
 
@@ -68,25 +93,26 @@ class MainActivity : AppCompatActivity() {
             viewType: Int
         ): ViewHolder {
             val v = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_layout, parent, false) as TextView
+                .inflate(R.layout.item_layout, parent, false) as View
             return ViewHolder(v)
         }
 
         // onBindViewHolder binds a ViewHolder to the data at the specified
         // position in mDataset
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val game = mDataset[position]
-            holder.mTitleTextView.text = game.title
-            holder.mPlatformTextView.text = game.platform
+            val game = gameList[position]
+            holder.mTitleTextView.text = game.name
+            holder.mPlatformTextView.text = game.plat
             holder.mYearTextView.text = game.year
-            holder.mGamePhoto//need to figure out the game
+            //holder.mGamePhoto//need to figure out the game
+
             // TODO
             // Add other views in viewholder to accompany title
             //
 
             holder.mTitleTextView.setOnClickListener {
                 val intent = Intent(parentActivity, DetailActivity::class.java)
-                intent.putExtra("title", game.title)
+                intent.putExtra("title", game.name)
                 intent.putExtra("platform", game.plat)
                 intent.putExtra("description", game.description)
                 intent.putExtra("image", game.src)
@@ -96,11 +122,11 @@ class MainActivity : AppCompatActivity() {
                 } catch (e: ActivityNotFoundException) {
                     e.printStackTrace()
                 }
-
             }
+
         }
         override fun getItemCount(): Int {
-            return mDataset.size
+            return gameList.size
         }
     }
 }
