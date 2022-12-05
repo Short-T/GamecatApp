@@ -12,9 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.gamecat.model.Game
 import ca.unb.mobiledev.gamecat.utils.GameAdapter
@@ -47,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //test = findViewById<View>(R.id.button) as Button
-        aTest = findViewById<View>(R.id.addButton) as ImageButton
+        aTest = findViewById<View>(R.id.deleteButton) as ImageButton
         //Sample code for button, will delete later
         /*test!!.setOnClickListener {
             val intent = Intent(this@MainActivity, DetailActivity::class.java)

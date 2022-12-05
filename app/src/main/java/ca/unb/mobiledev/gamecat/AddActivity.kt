@@ -1,11 +1,9 @@
 package ca.unb.mobiledev.gamecat
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -16,8 +14,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.room.TypeConverter
-import ca.unb.mobiledev.gamecat.repository.GameRepository
-import ca.unb.mobiledev.gamecat.model.Game
 import ca.unb.mobiledev.gamecat.utils.GameViewModel
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -56,7 +52,7 @@ class AddActivity : AppCompatActivity() {
             selectImage()
         }
 
-        val addButton = findViewById<Button>(R.id.addButton)
+        val addButton = findViewById<Button>(R.id.deleteButton)
         addButton.setOnClickListener {
             if(TextUtils.isEmpty(editTextTitle!!.text.toString())) {
                 Toast.makeText(applicationContext, "Can't create a game without a title", Toast.LENGTH_SHORT).show();
