@@ -10,20 +10,26 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        // TODO 1
-        //  Get the intent that started this activity, and get the extras from it
-        //  description + rating + condition + release etc
-
+        // Get intents
         val title = intent.getStringExtra("title")
         val plat = intent.getStringExtra("platform")
-        val year = intent.getStringExtra("year")
+        //val year = intent.getStringExtra("year")
         val description = intent.getStringExtra("description")
 
-        //val textView = findViewById<TextView>(R.id.description_textview)
-        // TODO 2
-        //  Set the TextViews to give the info
+        // Get textviews
+        val tText = findViewById<TextView>(R.id.gameNameBox)
+        val pText = findViewById<TextView>(R.id.platformBox)
+        val yText = findViewById<TextView>(R.id.releaseBox)
+        val rText = findViewById<TextView>(R.id.ratingBox)
+        val dText = findViewById<TextView>(R.id.notesBox)
 
-        //textView.text = description
+        // Set textviews
+        tText.text = title
+        pText.text = plat
+        //yText.text = year
+        //rText.text = rat
+        dText.text = description
+
 
         // TODO 3
         //  Make the TextView scrollable
