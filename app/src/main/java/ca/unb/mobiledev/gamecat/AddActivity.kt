@@ -7,6 +7,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,9 +15,11 @@ import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.TypeConverter
 import ca.unb.mobiledev.gamecat.repository.GameRepository
 import ca.unb.mobiledev.gamecat.model.Game
 import ca.unb.mobiledev.gamecat.utils.GameViewModel
+import java.io.ByteArrayOutputStream
 import java.util.*
 
 
@@ -28,7 +31,7 @@ class AddActivity : AppCompatActivity() {
     private var editTextNotes: EditText? = null
     private var editTextRating: EditText? = null
     private var gameButton: ImageButton? = null
-
+    private var image: ByteArray? = null
     private lateinit var viewModel: GameViewModel
 
     @SuppressLint("IntentReset")
@@ -86,11 +89,12 @@ class AddActivity : AppCompatActivity() {
 
                 val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, selectedImage)
                 gameButton?.setImageBitmap(bitmap)
+                image = fromBitmap(bitmap)
             }
             500 -> if (resultCode === RESULT_OK) {
                 val bitmap: Bitmap = data?.extras?.get("data") as Bitmap
                 gameButton?.setImageBitmap(bitmap)
-
+                image = fromBitmap(bitmap)
             }
         }
 
@@ -117,6 +121,18 @@ class AddActivity : AppCompatActivity() {
             }
         }).show()
 
+
+    }
+    //Taken from here https://github.com/prasadankitt/ImageApp/blob/main/app/src/main/java/com/example/cameragallery/Converter.kt
+    @TypeConverter
+    fun toBitmap(byteArray: ByteArray) : Bitmap {
+        return BitmapFactory.decodeByteArray(byteArray,0,byteArray.size)
+    }
+    @TypeConverter
+    fun fromBitmap(bitmap: Bitmap) : ByteArray {
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,outputStream)
+        return outputStream.toByteArray()
     }
 }
 
