@@ -1,10 +1,7 @@
 package ca.unb.mobiledev.gamecat.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import ca.unb.mobiledev.gamecat.model.Game
 
 /**
@@ -20,5 +17,6 @@ interface GameDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(game: Game)
 
-
+    @Delete
+    fun delete(game: Game)
 }

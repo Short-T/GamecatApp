@@ -26,6 +26,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         Log.i("view", "Inserting $name, $release, $plat")
     }
 
+    fun delete(game: Game) = viewModelScope.launch (Dispatchers.IO) {
+        gameRepo.deleteGame(game)
+    }
 
 
 
