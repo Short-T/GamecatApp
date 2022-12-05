@@ -6,27 +6,39 @@ import androidx.room.RoomDatabase
 import ca.unb.mobiledev.gamecat.dao.GameDao
 import kotlin.jvm.Volatile
 import androidx.room.Room
-import ca.unb.mobiledev.gamecat.repository.model.Game
+import androidx.sqlite.db.SupportSQLiteDatabase
+import ca.unb.mobiledev.gamecat.model.Game
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Database layer on top of the SQLite database
  */
 @Database(entities = [Game::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun gameDao(): GameDao?
+    abstract fun gameDao(): GameDao
 
+    private class GameDatabaseCallback(
+        private val scope: CoroutineScope
+    ) : RoomDatabase.Callback() {
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onOpen(db)
+            INSTANCE?.let { database ->
+                scope.launch {
+                    database.gameDao()
+                }
+            }
+        }
+    }
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
-        private const val NUMBER_OF_THREADS = 4
-
-        // Define an ExecutorService with a fixed thread pool which is used to run database operations asynchronously on a background thread
-        val databaseWriterExecutor: ExecutorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS)
 
         // Singleton access to the database
-        fun getDatabase(context: Context): AppDatabase {
+        fun getDatabase(context: Context, scope: CoroutineScope): AppDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance

@@ -1,18 +1,12 @@
 package ca.unb.mobiledev.gamecat.repository
 
-import android.app.Application
 import android.util.Log
+import androidx.lifecycle.LiveData
 import ca.unb.mobiledev.gamecat.dao.GameDao
-import ca.unb.mobiledev.gamecat.db.AppDatabase.Companion.getDatabase
-import ca.unb.mobiledev.gamecat.db.AppDatabase
-import ca.unb.mobiledev.gamecat.repository.model.Game
-import java.util.concurrent.Callable
-import java.util.concurrent.ExecutionException
-import java.util.concurrent.Future
-import java.util.concurrent.TimeUnit
+import ca.unb.mobiledev.gamecat.model.Game
 
-class GameRepository(application: Application) {
-    private val itemDao: GameDao? = getDatabase(application).gameDao()
+class GameRepository(private val gameDao: GameDao) {
+    val gameList: LiveData<List<Game>> = gameDao.getAllGames()
 
     // TODO Add query specific methods
     //  HINT 1:
@@ -35,13 +29,14 @@ class GameRepository(application: Application) {
         insert(newGame)
     }
 
+
     private fun insert(game: Game) {
-        AppDatabase.databaseWriterExecutor.execute { itemDao!!.insert(game) }
+        gameDao.insert(game)
         Log.i("Repository", "Game added to database")
     }
 
-    val allGames: List<Game> = itemDao!!.getAllGames()
-    val size: Int = itemDao!!.getSize()
+    //val allGames: List<Game> = itemDao!!.getAllGames()
+    //val size: Int = itemDao!!.getSize()
 
     /*fun searchRecord(name: String): List<Item>{
         val dataReadFuture: Future<List<Item>>? = AppDatabase.databaseWriterExecutor.submit(

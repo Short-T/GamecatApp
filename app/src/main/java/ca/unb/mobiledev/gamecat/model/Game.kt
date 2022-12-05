@@ -1,4 +1,4 @@
-package ca.unb.mobiledev.gamecat.repository.model
+package ca.unb.mobiledev.gamecat.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -14,25 +14,6 @@ class Game{
     //might not be string for img
     var src: String? = null
     var cond: String? = null
-
-    // Only need to include getters
-    val title: String
-        get() = "$name"
-
-    val platform: String
-        get() = "$plat"
-
-    val condition: String
-        get() = "Condition: $cond"
-
-    val release: String
-        get() = "Release: $year"
-
-    val img: String
-        get() = "$src"
-
-    val desc: String
-        get() = "$desc"
 
     /**data class Builder(
         var id: String? = null,
