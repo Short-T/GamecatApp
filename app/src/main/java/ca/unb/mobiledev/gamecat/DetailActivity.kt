@@ -59,6 +59,8 @@ class DetailActivity : AppCompatActivity() {
         //  Set the title of the action bar to be the course title
         //  HINT:
         //   This might help you - http://developer.android.com/reference/android/support/v7/app/AppCompatActivity.html#getSupportActionBar%28%29
+        // TODO Delete function
+
     }
 
     //Taken from here https://github.com/prasadankitt/ImageApp/blob/main/app/src/main/java/com/example/cameragallery/Converter.kt

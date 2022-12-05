@@ -55,7 +55,7 @@ class AddActivity : AppCompatActivity() {
             selectImage()
         }
 
-        val addButton = findViewById<Button>(R.id.deleteButton)
+        val addButton = findViewById<Button>(R.id.addButton)
         addButton.setOnClickListener {
             if(TextUtils.isEmpty(editTextTitle!!.text.toString())) {
                 Toast.makeText(applicationContext, "Can't create a game without a title", Toast.LENGTH_SHORT).show();
