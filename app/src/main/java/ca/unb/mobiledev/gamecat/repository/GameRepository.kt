@@ -19,10 +19,11 @@ class GameRepository(private val gameDao: GameDao) {
     //  https://github.com/hpowell20/cs2063-fall-2022-examples/blob/master/Lecture7/RoomPersistenceLibraryDemo/app/src/main/java/mobiledev/unb/ca/roompersistencetest/repository/ItemRepository.kt
     //  to see examples of how to work with the Executor Service along with Runnables and Callables
 
-    fun insertGame(name: String?, release: String?, plat: String?, condition: String?, desc: String?) {
+    fun insertGame(name: String?, release: String?, rating: String?,  plat: String?, condition: String?, desc: String?) {
         val newGame = Game()
         newGame.name = name
         newGame.year = release
+        newGame.rat = rating
         newGame.plat = plat
         newGame.cond = condition
         newGame.description = desc

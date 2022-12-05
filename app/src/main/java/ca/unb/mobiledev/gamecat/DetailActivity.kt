@@ -3,6 +3,7 @@ package ca.unb.mobiledev.gamecat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.widget.TextView
 
 class DetailActivity : AppCompatActivity() {
@@ -13,6 +14,7 @@ class DetailActivity : AppCompatActivity() {
         // Get intents
         val title = intent.getStringExtra("title")
         val plat = intent.getStringExtra("platform")
+        val rat = intent.getStringExtra("rating")
         val year = intent.getStringExtra("year")
         val cond = intent.getStringExtra("condition")
         val description = intent.getStringExtra("description")
@@ -24,13 +26,13 @@ class DetailActivity : AppCompatActivity() {
         val cText = findViewById<TextView>(R.id.conditionBox)
         val rText = findViewById<TextView>(R.id.ratingBox)
         val dText = findViewById<TextView>(R.id.notesBox)
-
+        Log.i("Detail", "$title $plat $rat $year $cond $description")
         // Set textviews
         tText.text = title
         pText.text = plat
         yText.text = year
         cText.text = cond
-        //rText.text = rat
+        rText.text = rat
         dText.text = description
 
 

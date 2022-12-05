@@ -53,11 +53,12 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this@MainActivity, DetailActivity::class.java)
                     intent.putExtra("title", game.name)
                     intent.putExtra("platform", game.plat)
+                    intent.putExtra("rating", game.rat)
                     intent.putExtra("description", game.description)
                     intent.putExtra("year", game.year)
                     intent.putExtra("condition", game.cond)
                     //intent.putExtra("image", game.src)
-
+                    Log.i("Main", "")
                     try {
                         ContextCompat.startActivity(this@MainActivity, intent, null)
                     } catch (e: ActivityNotFoundException) {
