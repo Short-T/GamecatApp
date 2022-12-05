@@ -13,20 +13,23 @@ class DetailActivity : AppCompatActivity() {
         // Get intents
         val title = intent.getStringExtra("title")
         val plat = intent.getStringExtra("platform")
-        //val year = intent.getStringExtra("year")
+        val year = intent.getStringExtra("year")
+        val cond = intent.getStringExtra("condition")
         val description = intent.getStringExtra("description")
 
         // Get textviews
         val tText = findViewById<TextView>(R.id.gameNameBox)
         val pText = findViewById<TextView>(R.id.platformBox)
         val yText = findViewById<TextView>(R.id.releaseBox)
+        val cText = findViewById<TextView>(R.id.conditionBox)
         val rText = findViewById<TextView>(R.id.ratingBox)
         val dText = findViewById<TextView>(R.id.notesBox)
 
         // Set textviews
         tText.text = title
         pText.text = plat
-        //yText.text = year
+        yText.text = year
+        cText.text = cond
         //rText.text = rat
         dText.text = description
 
