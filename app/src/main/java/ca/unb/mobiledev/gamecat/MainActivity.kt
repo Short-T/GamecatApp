@@ -44,26 +44,62 @@ class MainActivity : AppCompatActivity() {
             adapterG.notifyDataSetChanged()
         }
 
-        //test = findViewById<View>(R.id.button) as Button
-        aTest = findViewById<View>(R.id.deleteButton) as ImageButton
-        //Sample code for button, will delete later
-        /*test!!.setOnClickListener {
-            val intent = Intent(this@MainActivity, DetailActivity::class.java)
-            try {
-                startActivity(intent)
-            } catch (ex: ActivityNotFoundException) {
-                Log.e("Main", "Unable to start the activity")
+        // TODO tap listView to start activity_detail
+
+        mListView.onItemClickListener =
+            AdapterView.OnItemClickListener { _: AdapterView<*>, _: View, position: Int, _: Long ->
+                val game: Game? = viewModel.allGames.value?.get(position)
+                if (game != null) {
+                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    intent.putExtra("title", game.name)
+                    intent.putExtra("platform", game.plat)
+                    intent.putExtra("description", game.description)
+                    intent.putExtra("year", game.year)
+                    intent.putExtra("condition", game.cond)
+                    //intent.putExtra("image", game.src)
+
+                    try {
+                        ContextCompat.startActivity(this@MainActivity, intent, null)
+                    } catch (e: ActivityNotFoundException) {
+                        e.printStackTrace()
+                    }
+                }
+                true
             }
-        }*/
-        aTest!!.setOnClickListener {
-            val addIntent = Intent(this@MainActivity, AddActivity::class.java)
-            try {
-                startActivity(addIntent)
-            } catch (ex: ActivityNotFoundException) {
-                Log.e("Main", "Unable to start the activity")
+                /*mListView.setOnClickListener {
+                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    intent.putExtra("title", game.name)
+                    intent.putExtra("platform", game.plat)
+                    intent.putExtra("description", game.description)
+                    intent.putExtra("image", game.src)
+
+                    try {
+                        ContextCompat.startActivity(parentActivity, intent, null)
+                    } catch (e: ActivityNotFoundException) {
+                        e.printStackTrace()
+                    }
+                }*/
+
+                //test = findViewById<View>(R.id.button) as Button
+                aTest = findViewById<View>(R.id.deleteButton) as ImageButton
+                //Sample code for button, will delete later
+                /*test!!.setOnClickListener {
+                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    try {
+                        startActivity(intent)
+                    } catch (ex: ActivityNotFoundException) {
+                        Log.e("Main", "Unable to start the activity")
+                    }
+                }*/
+                aTest!!.setOnClickListener {
+                    val addIntent = Intent(this@MainActivity, AddActivity::class.java)
+                    try {
+                        startActivity(addIntent)
+                    } catch (ex: ActivityNotFoundException) {
+                        Log.e("Main", "Unable to start the activity")
+                    }
+                }
             }
-        }
-    }
 
     class MyAdapter(private val gameList: List<Game>, private val parentActivity: Activity) :
         RecyclerView.Adapter<MyAdapter.ViewHolder>() {
@@ -121,6 +157,8 @@ class MainActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
             }
+
+
 
         }
         override fun getItemCount(): Int {

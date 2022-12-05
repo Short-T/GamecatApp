@@ -11,6 +11,7 @@ class Game{
     var plat: String? = null
     var description: String? = null
     var year: String? = null
+    // TODO add rating
     //might not be string for img
     var src: String? = null
     var cond: String? = null
