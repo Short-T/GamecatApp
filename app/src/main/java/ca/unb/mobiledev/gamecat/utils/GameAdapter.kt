@@ -1,6 +1,7 @@
 package ca.unb.mobiledev.gamecat.utils
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,16 +15,18 @@ class GameAdapter(context: Context, games: List<Game>) : ArrayAdapter<Game>(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
         val game = getItem(position)
-
+        //val name = game!!.name
+        //val p = game.plat
+        //Log.i("Game added:", "$name and $p")
         if (view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.game_list, parent, false)
+            view = LayoutInflater.from(context).inflate(R.layout.recycler_view_item, parent, false)
         }
 
-        val title = view!!.findViewById<TextView>(R.id.name)
-        val desc = view.findViewById<TextView>(R.id.description)
+        val title = view!!.findViewById<TextView>(R.id.title)
+        val desc = view.findViewById<TextView>(R.id.platform)
 
         title.text = game!!.name
-        desc.text = game.description
+        desc.text = game.plat
 
         return view
     }
