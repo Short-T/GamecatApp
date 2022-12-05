@@ -68,6 +68,7 @@ class AddActivity : AppCompatActivity() {
                                 editTextCond!!.text.toString(),
                                 editTextNotes!!.text.toString())
 
+                // VALUES NOT BEING PROPERLY ADDED PLEASE FIX
                 // It should add the game to the database
 
                 //finish() should terminate the activity

@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             //holder.mGamePhoto//need to figure out the game
 
             // TODO
-            // Add other views in viewholder to accompany title
+            // Add other views in view holder to accompany title
             //
 
             holder.mTitleTextView.setOnClickListener {

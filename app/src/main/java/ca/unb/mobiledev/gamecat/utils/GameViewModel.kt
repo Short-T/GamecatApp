@@ -1,6 +1,7 @@
 package ca.unb.mobiledev.gamecat.utils
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -22,6 +23,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     fun insert(name: String?, release: String?, plat: String, condition: String?, desc: String?) = viewModelScope.launch(Dispatchers.IO){
         gameRepo.insertGame(name, release, plat, condition, desc)
+        Log.i("view", "Inserting $name, $release, $plat")
     }
 
 
