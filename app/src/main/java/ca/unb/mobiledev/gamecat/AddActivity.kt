@@ -60,9 +60,11 @@ class AddActivity : AppCompatActivity() {
                 //insert name, release, plat, cond, desc
                 viewModel.insert(editTextTitle!!.text.toString(),
                                 editTextRelease!!.text.toString(),
+                        editTextRating!!.text.toString(),
                                 editPlatform!!.text.toString(),
                                 editTextCond!!.text.toString(),
                                 editTextNotes!!.text.toString())
+
 
                 // VALUES NOT BEING PROPERLY ADDED PLEASE FIX
                 // It should add the game to the database
