@@ -16,6 +16,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.gamecat.model.Game
+import ca.unb.mobiledev.gamecat.repository.GameRepository
 import ca.unb.mobiledev.gamecat.utils.GameAdapter
 import ca.unb.mobiledev.gamecat.utils.GameViewModel
 import com.google.android.material.textfield.TextInputEditText
@@ -73,6 +74,29 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
+            
+        mListView.onItemLongClickListener =
+            AdapterView.OnItemLongClickListener { _: AdapterView<*>, _: View, position: Int, _: Long ->
+                val game: Game? = viewModel.allGames.value?.get(position)
+                if (game !=null){
+                    viewModel.delete(game)
+                }
+                true
+
+            }
+                /*mListView.setOnClickListener {
+                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    intent.putExtra("title", game.name)
+                    intent.putExtra("platform", game.plat)
+                    intent.putExtra("description", game.description)
+                    intent.putExtra("image", game.src)
+
+                    try {
+                        ContextCompat.startActivity(parentActivity, intent, null)
+                    } catch (e: ActivityNotFoundException) {
+                        e.printStackTrace()
+                    }
+                }*/
 
         aTest = findViewById<View>(R.id.deleteButton) as ImageButton
         aTest!!.setOnClickListener {
