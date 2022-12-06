@@ -4,7 +4,9 @@
               android:orientation="horizontal"
               android:padding="8dp"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+
+              android:background="#FF757572">
 
   <ImageView
       android:id="@+id/GameIconImage"
@@ -24,18 +26,21 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
         tools:text="@tools:sample/lorem[3]" />
 
     <TextView
         android:id="@+id/platform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
         tools:text="@tools:sample/lorem[4]" />
 
     <TextView
         android:id="@+id/releaseYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
         tools:text="@tools:sample/lorem[2]" />
   </LinearLayout>
 </LinearLayout>
