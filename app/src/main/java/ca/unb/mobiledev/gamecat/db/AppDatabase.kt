@@ -34,6 +34,8 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
     companion object {
+        val databaseWriterExecutor: ExecutorService = Executors.newFixedThreadPool(4)
+
         @Volatile
         private var INSTANCE: AppDatabase? = null
 

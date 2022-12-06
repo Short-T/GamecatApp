@@ -14,11 +14,13 @@ import kotlinx.coroutines.launch
 class GameViewModel(application: Application) : AndroidViewModel(application) {
     private val gameRepo: GameRepository
     val allGames: LiveData<List<Game>>
+    var returnedGames: LiveData<List<Game>>?
 
     init {
         val gameDao = AppDatabase.getDatabase(application, viewModelScope).gameDao()
         gameRepo = GameRepository(gameDao)
         allGames = gameRepo.gameList
+        returnedGames = allGames
     }
 
     fun insert(name: String?, release: String?, rating :String, plat: String, condition: String?, desc: String?, img: ByteArray?) = viewModelScope.launch(Dispatchers.IO){
@@ -28,6 +30,19 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     fun delete(game: Game) = viewModelScope.launch (Dispatchers.IO) {
         gameRepo.deleteGame(game)
+    }
+
+    fun search(name: String?): LiveData<List<Game>>?{
+        var searchResult: LiveData<List<Game>>?
+        if (name != null) {
+            searchResult = gameRepo.searchGames(name)
+        } else {
+            searchResult = allGames
+        }
+
+        returnedGames = searchResult
+
+        return searchResult
     }
 
 

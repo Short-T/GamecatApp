@@ -3,7 +3,12 @@ package ca.unb.mobiledev.gamecat.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import ca.unb.mobiledev.gamecat.dao.GameDao
+import ca.unb.mobiledev.gamecat.db.AppDatabase
 import ca.unb.mobiledev.gamecat.model.Game
+import java.util.concurrent.Callable
+import java.util.concurrent.ExecutionException
+import java.util.concurrent.Future
+import java.util.concurrent.TimeUnit
 
 class GameRepository(private val gameDao: GameDao) {
     val gameList: LiveData<List<Game>> = gameDao.getAllGames()
@@ -40,33 +45,27 @@ class GameRepository(private val gameDao: GameDao) {
         gameDao.delete(game)
     }
 
-    /*fun searchRecord(name: String): List<Item>{
-        val dataReadFuture: Future<List<Item>>? = AppDatabase.databaseWriterExecutor.submit(
-            Callable{
-                itemDao!!searchRecords(name)
+    fun searchGames(name: String): LiveData<List<Game>>? {
+        // Using a Callable thread object as there are return values
+        val dataReadFuture: Future<LiveData<List<Game>>> = AppDatabase.databaseWriterExecutor.submit(
+            Callable {
+                gameDao.searchGames("%$name%")
             })
-        if (dataReadFuture != null) {
-            return try{
-                while (!dataReadFuture.isDone) {
-                    // Simulating another task
-                    TimeUnit.SECONDS.sleep(1)
-                }
-             dataReadFuture.get()
-
-            }catch (e: ExecutionException){
-                e.printStackTrace()
-                emptyList()
-            }catch (e: InterruptedException){
-                e.printStackTrace()
-                emptyList()
+        try {
+            while (!dataReadFuture.isDone) {
+                // Simulating another task
+                TimeUnit.SECONDS.sleep(1)
             }
-
+            return dataReadFuture.get()
+        } catch (e: ExecutionException) {
+            e.printStackTrace()
+            0
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+            0
         }
-        return emptyList()
-    }*/
-
-
-
+        return null
+    }
 
 }
 
