@@ -1,14 +1,10 @@
-To Do:
+App Features:
 
-1. Implement RecyclerView
-  i. recylcerview layout
-  ii. grab existing game list
-  
-2. Implement adding game function calls
+1. Add games: using the "+" icon in the top left of the screen you can tap here to add a game to your collection
+	-Fill out the details specificed within the add game screen
+	-Supports photo gallery or camera images
+	
+2. Delete games: Long press an entry on the main screen to delete a game from your collection
 
-3. Implement searching 
-    i. Search first by title
-    ii. If result list = 0, search by notes or description, or year
-    iii. Search by console?
-    
-4. Implement removegame
+3. Search games: You may search by title of the game to find it quickly. 
+
