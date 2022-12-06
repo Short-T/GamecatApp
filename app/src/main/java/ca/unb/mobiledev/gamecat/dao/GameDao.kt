@@ -11,7 +11,7 @@ import ca.unb.mobiledev.gamecat.model.Game
 interface GameDao {
     //@Query("SELECT * from game_table WHERE name = :name")
     //fun searchRecords(name : String): List<Game>
-    @Query("SELECT * from game_table")
+    @Query("SELECT * from game_table order by name ASC")
     fun getAllGames(): LiveData<List<Game>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

@@ -58,30 +58,31 @@ class AddActivity : AppCompatActivity() {
         val addButton = findViewById<Button>(R.id.addButton)
         addButton.setOnClickListener {
             if(TextUtils.isEmpty(editTextTitle!!.text.toString())) {
-                Toast.makeText(applicationContext, "Can't create a game without a title", Toast.LENGTH_SHORT).show();
+                Toast.makeText(applicationContext, "Can't create a game without a title", Toast.LENGTH_SHORT).show()
             } else {
 
                 //Converts Bitmap to Bytearray for insert
-                val bitmap: Bitmap? = testImage
-                val byteArrayOutputStream = ByteArrayOutputStream()
-                bitmap!!.compress(Bitmap.CompressFormat.PNG, 0, byteArrayOutputStream)
-                val bytesImage = byteArrayOutputStream.toByteArray()
+                try {
+                    val bitmap: Bitmap? = testImage
+                    val byteArrayOutputStream = ByteArrayOutputStream()
+                    bitmap!!.compress(Bitmap.CompressFormat.PNG, 0, byteArrayOutputStream)
+                    val bytesImage = byteArrayOutputStream.toByteArray()
 
 
-                //insert name, release, plat, cond, desc
-                viewModel.insert(editTextTitle!!.text.toString(),
-                                editTextRelease!!.text.toString(),
+                    //insert name, release, plat, cond, desc
+                    viewModel.insert(
+                        editTextTitle!!.text.toString(),
+                        editTextRelease!!.text.toString(),
                         editTextRating!!.text.toString(),
-                                editPlatform!!.text.toString(),
-                                editTextCond!!.text.toString(),
-                                editTextNotes!!.text.toString(), bytesImage)
-
-
-                // VALUES NOT BEING PROPERLY ADDED PLEASE FIX
-                // It should add the game to the database
-
-                //finish() should terminate the activity
-                finish()
+                        editPlatform!!.text.toString(),
+                        editTextCond!!.text.toString(),
+                        editTextNotes!!.text.toString(), bytesImage
+                    )
+                    //finish() should terminate the activity
+                    finish()
+                } catch(e: Exception) {
+                    Toast.makeText(applicationContext, "Can't create a game without an image", Toast.LENGTH_LONG).show()
+                }
             }
         }
 
