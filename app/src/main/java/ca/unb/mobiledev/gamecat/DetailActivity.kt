@@ -20,7 +20,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-
+        val viewModel = ViewModelProvider(this)[GameViewModel::class.java]
 
         // Get intents
         val title = intent.getStringExtra("title")
@@ -67,10 +67,15 @@ class DetailActivity : AppCompatActivity() {
         //   This might help you - http://developer.android.com/reference/android/support/v7/app/AppCompatActivity.html#getSupportActionBar%28%29
         // TODO Delete function
 
-        val deleteButton = findViewById<Button>(R.id.deleteButton)
+        /*val deleteButton = findViewById<Button>(R.id.deleteButton)
+
         deleteButton.setOnClickListener {
 
-        }
+                   val game: Game? = viewModel.allGames.value?.get(1)
+            if (game != null) {
+                viewModel.delete(game)
+            }
+        }*/
     }
 
     //Taken from here https://github.com/prasadankitt/ImageApp/blob/main/app/src/main/java/com/example/cameragallery/Converter.kt
