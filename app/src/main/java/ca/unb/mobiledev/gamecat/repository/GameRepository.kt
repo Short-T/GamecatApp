@@ -39,6 +39,7 @@ class GameRepository(private val gameDao: GameDao) {
     fun deleteGame(game: Game) {
         gameDao.delete(game)
     }
+
     /*fun searchRecord(name: String): List<Item>{
         val dataReadFuture: Future<List<Item>>? = AppDatabase.databaseWriterExecutor.submit(
             Callable{
