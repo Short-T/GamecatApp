@@ -7,14 +7,53 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/searchToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:layout_editor_absoluteX="1dp"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/editSearch"
+            android:layout_width="770px"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Search"
+            tools:layout_editor_absoluteX="82dp"
+            tools:layout_editor_absoluteY="73dp" />
+
+        <Button
+            android:id="@+id/confirmButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintStart_toEndOf="@id/editSearch"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteX="317dp"
+            tools:layout_editor_absoluteY="71dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"></ListView>
+        app:layout_constraintTop_toBottomOf="@+id/searchToolbar"
+        app:layout_constraintVertical_bias="0.0">
+
+    </ListView>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
