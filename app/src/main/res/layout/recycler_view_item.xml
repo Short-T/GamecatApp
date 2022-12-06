@@ -10,8 +10,8 @@
 
   <ImageView
       android:id="@+id/GameIconImage"
-      android:layout_width="82dp"
-      android:layout_height="wrap_content"
+      android:layout_width="80dp"
+      android:layout_height="105dp"
       android:contentDescription="TODO"
       tools:src="@tools:sample/avatars" />
 
