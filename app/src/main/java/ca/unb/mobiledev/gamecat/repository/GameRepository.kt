@@ -51,5 +51,20 @@ class GameRepository(private val gameDao: GameDao) {
         val dataReadFuture: Future<LiveData<List<Game>>> = AppDatabase.databaseWriterExecutor.submit(
             Callable {
                 gameDao.searchGames("%$name%")
+            })
+        try {
+            while (!dataReadFuture.isDone) {
+                // Simulating another task
+                TimeUnit.SECONDS.sleep(1)
+            }
+            return dataReadFuture.get()
+        } catch (e: ExecutionException) {
+            e.printStackTrace()
+            0
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+            0
+        }
+        return null
     }
 }
